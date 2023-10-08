@@ -1,18 +1,16 @@
 name: My Workflow
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:  # Đây là sự kiện để kích hoạt quy trình
+    inputs:
+      my_input:
+        description: A custom input
+        required: false
+        default: "default_value"
 
 jobs:
-  build:
+  my_job:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Build
-      run: |
-        echo "Building the code..."
+      - name: Print Input
+        run: echo "Input: ${{ github.event.inputs.my_input }}"
