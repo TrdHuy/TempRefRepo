@@ -1,0 +1,17 @@
+name: My Workflow
+
+on:
+  workflow_dispatch:  # Đây là sự kiện để kích hoạt quy trình
+    inputs:
+      my_input:
+        description: A custom input
+        required: false
+        default: "default_value"
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Input
+        run: | 
+            echo "Input: ${{ github.event.inputs.my_input }}"
